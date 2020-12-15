@@ -49,9 +49,9 @@ export const {
 
 export default booksSlice.reducer
 
-export const selectBooks = state => state.books
+export const selectBooks = (state) => state.books
 
-export const fetchBooks = (search, startIndex = 0) => async dispatch => {
+export const fetchBooks = (search, startIndex = 0) => async (dispatch) => {
   try {
     dispatch(getItemsStart(startIndex))
     const response = await getBooks(search, startIndex)
