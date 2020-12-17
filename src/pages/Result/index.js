@@ -5,6 +5,7 @@ import { fetchBooks, selectBooks } from '../../store/books'
 import SearchForm from '../../components/SearchForm'
 import Books from '../../components/Books'
 import Pagination from '../../components/Books/Pagination'
+import Retry from '../../components/Books/Retry'
 import Stack from '../../components/Stack'
 
 function Result() {
@@ -26,6 +27,7 @@ function Result() {
         <SearchForm />
         <Books items={items} />
         <Pagination />
+        <Retry />
       </Stack>
     </div>
   )

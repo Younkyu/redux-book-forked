@@ -8,6 +8,9 @@ function Pagination() {
   const location = useLocation()
   const { status, startIndex } = useSelector(selectBooks)
   const isLoading = status === Status.Loading
+  const Failure = status === Status.Failure
+
+  if (Failure) return null
 
   return (
     <button
