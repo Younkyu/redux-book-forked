@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getBooks } from '../api'
+import BooksApi from '../fetchers/books'
 
 export const Status = {
   Idle: 'idle',
@@ -60,9 +60,8 @@ export const selectBooks = (state) => state.books
 export const fetchBooks = (search, startIndex = 0) => async (dispatch) => {
   try {
     dispatch(getItemsStart(startIndex))
-    const response = await getBooks(search, startIndex)
-    const data = await response.json()
-    dispatch(getItemsSuccess({ ...data, startIndex }))
+    const response = await new BooksApi().getBooks(search, startIndex)
+    dispatch(getItemsSuccess({ ...response, startIndex }))
   } catch (error) {
     dispatch(getItemsFailure(error))
   }
